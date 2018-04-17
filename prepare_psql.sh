@@ -1,4 +1,6 @@
 p=$(dirname $(realpath $0))
+cd "$p"
+bin/bundle install
 if [ -d /run/postgresql ]; then
 	echo "Socket already created"
 else
@@ -13,4 +15,5 @@ su -c 'cd /var/lib/postgres &&
        sudo -u postgres createuser rotalize -s &&
        echo "Created user"'
 cd "$p"
-rake db:create
+bin/rake db:create
+bin/rake db:migrate
