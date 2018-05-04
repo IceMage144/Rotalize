@@ -1,12 +1,21 @@
 app:
     build: .
     command: rails server -p 3000 -b '0.0.0.0'
+    environment:
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: 5432
+        POSTGRES_DATABASE: postgres
+        POSTGRES_USER: rotalize
     volumes:
         - .:/app
     ports:
         - "3000:3000"
+    links:
+        - postgres
 
 postgres:
     image: postgres:10.3
+    environment:
+        POSTGRES_USER: rotalize
     ports:
-        - "5432"
+        - "5432:5432"
