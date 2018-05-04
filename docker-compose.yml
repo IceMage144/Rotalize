@@ -1,6 +1,9 @@
 app:
     build: .
-    command: rails server -p 3000 -b '0.0.0.0'
+    command: bash -c "ping -c 3 postgres &&
+          bundle exec rake db:create &&
+          bundle exec rake db:migrate &&
+          bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
         POSTGRES_HOST: postgres
         POSTGRES_PORT: 5432
@@ -19,3 +22,5 @@ postgres:
         POSTGRES_USER: rotalize
     ports:
         - "5432:5432"
+    volumes:
+        - ./tmp/db:/var/lib/postgresql/data

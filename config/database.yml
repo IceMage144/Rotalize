@@ -27,7 +27,7 @@ default: &default
 
 development:
   <<: *default
-  database: Rotalize_development
+  database: rotalize_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,7 +62,7 @@ development:
 test:
   <<: *default
   adapter: postgresql
-  database: Rotalize_test
+  database: rotalize_test
   username: rotalize
   encoding: unicode
 
@@ -87,6 +87,6 @@ test:
 #
 production:
   <<: *default
-  database: Rotalize_production
-  username: Rotalize
+  database: rotalize_production
+  username: rotalize
   password: <%= ENV['ROTALIZE_DATABASE_PASSWORD'] %>
