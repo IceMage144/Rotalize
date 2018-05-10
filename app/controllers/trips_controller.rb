@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
     def index
 		@trip = Trip.all
-	end
+    end
 
 	def create
 	end
@@ -19,5 +19,5 @@ class TripsController < ApplicationController
 	end
 
 	def destroy
-end
+    end
 end
