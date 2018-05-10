@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MonumentTest < ActiveSupport::TestCase
+class LocalTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
