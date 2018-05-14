@@ -3,6 +3,7 @@ class Local < ApplicationRecord
     has_one :user
 
     def initialize (name, country, currency, img)
+        super()
         @name = name
         @country = country
         @currency = currency

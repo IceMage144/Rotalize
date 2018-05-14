@@ -1,9 +1,10 @@
 app:
     build: .
-    command: bash -c "ping -c 3 postgres &&
-          bundle exec rake db:create &&
-          bundle exec rake db:migrate &&
-          bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "
+          ping -c 3 postgres &&
+          rake db:create &&
+          rake db:migrate &&
+          rails s -p 3000 -b '0.0.0.0'"
     environment:
         POSTGRES_HOST: postgres
         POSTGRES_PORT: 5432
