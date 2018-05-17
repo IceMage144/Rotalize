@@ -1,5 +1,29 @@
 %p#notice= notice
 
+%p
+  %b Name:
+  = @place.name
+%p
+  %b Placetype:
+  = @place.placetype
+%p
+  %b Opentime:
+  = @place.opentime
+%p
+  %b Closetime:
+  = @place.closetime
+%p
+  %b Img:
+  = @place.img
+%p
+  %b Description:
+  = @place.description
+%p
+  %b Address:
+  = @place.address
+%p
+  %b Price:
+  = @place.price
 
 = link_to 'Edit', edit_place_path(@place)
 \|

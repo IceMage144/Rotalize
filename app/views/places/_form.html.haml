@@ -6,5 +6,29 @@
         - @place.errors.full_messages.each do |message|
           %li= message
 
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :placetype
+    = f.number_field :placetype
+  .field
+    = f.label :opentime
+    = f.time_select :opentime
+  .field
+    = f.label :closetime
+    = f.time_select :closetime
+  .field
+    = f.label :img
+    = f.text_field :img
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :price
+    = f.text_field :price
   .actions
     = f.submit 'Save'

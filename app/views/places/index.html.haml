@@ -3,6 +3,14 @@
 %table
   %thead
     %tr
+      %th Name
+      %th Placetype
+      %th Opentime
+      %th Closetime
+      %th Img
+      %th Description
+      %th Address
+      %th Price
       %th
       %th
       %th
@@ -10,6 +18,14 @@
   %tbody
     - @places.each do |place|
       %tr
+        %td= place.name
+        %td= place.placetype
+        %td= place.opentime
+        %td= place.closetime
+        %td= place.img
+        %td= place.description
+        %td= place.address
+        %td= place.price
         %td= link_to 'Show', place
         %td= link_to 'Edit', edit_place_path(place)
         %td= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' }

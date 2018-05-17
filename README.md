@@ -16,10 +16,10 @@ sudo docker-compose up
 Now you can access the site at localhost:3000 .
 You may have to disable postgressql by running :
 ```
-systemctl stop postgressql
+systemctl stop postgres
 ```
 
-## Deliverys :
+## Deliveries :
 ### First delivery :
 We will have done modeling our data base by the first delivery.
 

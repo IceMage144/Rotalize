@@ -3,6 +3,9 @@
 %table
   %thead
     %tr
+      %th Name
+      %th Beginning
+      %th Duration
       %th
       %th
       %th
@@ -10,6 +13,9 @@
   %tbody
     - @trips.each do |trip|
       %tr
+        %td= trip.name
+        %td= trip.beginning
+        %td= trip.duration
         %td= link_to 'Show', trip
         %td= link_to 'Edit', edit_trip_path(trip)
         %td= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' }

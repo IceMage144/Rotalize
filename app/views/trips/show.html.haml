@@ -1,5 +1,14 @@
 %p#notice= notice
 
+%p
+  %b Name:
+  = @trip.name
+%p
+  %b Beginning:
+  = @trip.beginning
+%p
+  %b Duration:
+  = @trip.duration
 
 = link_to 'Edit', edit_trip_path(@trip)
 \|
