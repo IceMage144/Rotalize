@@ -1,8 +1,11 @@
 class Place < ApplicationRecord
     belongs_to :local
-    has_one :user
-    def initialize(name, description, type, img, comments, address, op_hour, price)
-        @name = name
+    belongs_to :user
+    validates :name, presence: true
+    validates :type, presence: true
+    validates :time, presence: true
+    validates :img, presence: true
+    validates :description, presence: true
+    validates :address, presence: true
 
-    end
 end

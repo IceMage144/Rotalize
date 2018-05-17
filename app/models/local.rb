@@ -1,11 +1,9 @@
 class Local < ApplicationRecord
     has_many :places
-    has_one :user
 
-    def initialize (name, country, currency, img)
-        @name = name
-        @country = country
-        @currency = currency
-        @img = img
-    end
+    validates :name, presence: true
+    validates :country, presence: true
+    validates :currency, presence: true
+    validates :img, presence: true
+
 end
