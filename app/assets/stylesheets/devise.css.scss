@@ -1,0 +1,68 @@
+@import "base/global.scss";
+
+body {
+  background: $primary-color;
+}
+
+.card {
+  width: 100%;
+  max-width: 640px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header {
+  background: $darker-color;
+  margin-top: -1px;
+  text-align: center;
+  border-radius: 2px 2px 0 0;
+}
+
+h3 {
+    color: $white;
+}
+
+.content {
+  color: $dark-grey;
+  padding: 27px 32px 32px 32px;
+}
+
+#password-container {
+  margin: 43px 0 6px 0;
+}
+
+input:focus:not([readonly]) {
+  box-shadow: 0 1px 0 0 $primary-color !important;
+  border-bottom: 1px solid $primary-color !important;
+}
+.md-form .prefix.active {
+  color: $primary-color;
+}
+.md-form label.active {
+  color: $primary-color;
+}
+
+#login {
+  background: $darker-color;
+  height: 64px;
+  margin: 6px 0 0 0;
+  box-shadow: none;
+}
+input[type=submit] {
+  background-color: $darker-color;
+  border: none;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#signup {
+  height: 32px;
+  margin: 32px 0 0 0;
+  padding: 0;
+  box-shadow: none;
+}
