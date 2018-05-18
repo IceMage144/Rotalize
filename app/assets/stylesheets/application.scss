@@ -9,9 +9,11 @@ html, body {
 }
 ::selection {
   background: $primary-color;
+  color: $white;
 }
 ::-moz-selection {
   background: $primary-color;
+  color: $white;
 }
 a {
   color: $primary-color;

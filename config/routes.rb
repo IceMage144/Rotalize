@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-  resources :places
   devise_for :users
-
-  get 'request/index'
-
   resources :trips
-
+  resources :places
   root 'request#index'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'request/index'
 end
