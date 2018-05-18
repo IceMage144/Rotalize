@@ -1,12 +1,24 @@
-<!-- %h1 Apelidos cadastrados
-- @trip.each do |ap|
-	%p= "#{ap.id}" -->
+<!----------------------------------------------------------------------------->
+<%= stylesheet_link_tag 'trips' %>
 
-	<%= render 'layouts/header' %>
-	<%= render 'layouts/drawer' %>
+<p class="page-title">My Trips</p>
 
-	<main class="mdl-layout__content">
-		<%= yield %>
-	</main>
+<div class="trips-container">
+  <% @trips.each do |trip| %>
+    <%= link_to(trip_path(trip)) do %>
+      <div class="trip card">
+        <p class="name"><span><%= trip.name %><span></p>
+        <div class="info">
+          <p><span>Beginning:</span> <%= trip.beginning %></p>
+          <p><span>Durarion:</span> <%= trip.duration %> days</p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
-	<%= render 'layouts/footer' %>
+<div class="btn-container">
+  <button type="button" class="btn"><i class="fa fa-5x fa-plus"></i></button>
+</div>
+
+<!----------------------------------------------------------------------------->

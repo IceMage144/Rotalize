@@ -1,0 +1,56 @@
+/******************************************************************************
+ * Trips                                                                      *
+ ******************************************************************************/
+@import "base/global.scss";
+
+.page-title {
+  color: $primary-color;
+  margin: 0;
+  font-size: 32px;
+}
+
+.trips-container {
+  margin: 31px 0 0 0;
+  text-align: center;
+}
+.trip {
+  background: $white;
+  height: 128px;
+  width: 100%;
+  max-width: 512px;
+  margin: 0 16px 16px 0;
+  padding: 24px 0;
+  display: inline-block;
+  @media screen and (max-width: 1380px) {
+    margin: 0 0 16px 0;
+  }
+}
+
+span {
+  color: $primary-color;
+}
+.name {
+  font-size: 24px;
+}
+.info {
+  p {
+    color: $black;
+    font-size: 16px;
+    display: inline-block;
+    margin: 0 13px;
+  }
+
+}
+
+.btn-container {
+  margin: 11px 0 0 0;
+  text-align: center;
+}
+.btn {
+  background: $primary-color;
+  padding: 0;
+  height: 32px;
+  width: 128px;
+}
+
+/******************************************************************************/
