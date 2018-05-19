@@ -6,7 +6,6 @@ Our aim is to create a site where you can create and manage your own travel itin
 Web application framework: Ruby on Rails
 
 Database management system: PostgreSQL
-
 Containerization tool: Docker
 
 ## Documentation:

@@ -38,7 +38,8 @@ gem 'bcrypt', '~> 3.1.12'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
+  # Adds support for RSpec testing tool, Capybara system testing and selenium driver
+  gem 'rspec-rails'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
