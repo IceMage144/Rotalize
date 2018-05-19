@@ -4,7 +4,7 @@
 @import "base/global.scss";
 
 html, body {
-  background: #F5F5F5;
+  background: $light-grey;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 ::selection {
@@ -28,10 +28,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /******************************************************************************
+ * Header                                                                     *
+ ******************************************************************************/
+.mdl-layout__drawer-button {
+  margin: 3px 0 0 8px !important;
+}
+.logo-image {
+  height: 32px;
+  margin: 0 -1px 0 -8px;
+}
+.header-title {
+  color: $white;
+  font-size: 24px;
+}
+
+/******************************************************************************
  * Drawer                                                                     *
  ******************************************************************************/
 .mdl-layout__drawer {
-  background: #F5F5F5;
+  background: $light-grey;
 }
 .drawer_header {
   background: #FFFFFF;
@@ -46,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
  * Content                                                                     *
  ******************************************************************************/
 main {
-  padding: 32px;
+  padding: 30px;
 }
 
 /******************************************************************************
