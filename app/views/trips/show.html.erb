@@ -1,13 +1,91 @@
-<h2><%= @post.title %></h2>
-<p><%= @post.body %></p>
+<!----------------------------------------------------------------------------->
+<!-- Trip - Show                                                             -->
+<!----------------------------------------------------------------------------->
+<%= stylesheet_link_tag 'trips' %>
 
-<hr>
-<%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-default' %>
-<%= link_to "Delete", post_path(@post),
-  method: :delete,
-  data: {confirm: 'Are you sure?'},
-  :class => 'btn btn-danger' %>
-<hr>
+<!-- Trip --------------------------------------------------------------------->
+<p class="page-title">Trip</p>
+<%= form_for :trip, url: trip_path(@trip), method: :patch do |f| %>
+  <div class="trip-info-container">
+    <div class="input">
+      <%= f.label(:name) %><br>
+      <%= f.text_field(:name, :class=>'form-control') %>
+    </div>
+    <div class="input">
+      <%= f.label(:beginning) %><br>
+      <%= f.text_field(:beginning, :class=>'form-control') %>
+    </div>
+    <div class="input last">
+      <%= f.label(:duration, :class=>"disabled") %><br>
+      <%= f.text_field(:duration, :class=>'form-control', disabled: true) %>
+    </div>
+  </div>
+<% end %>
 
-<%= render 'comments/comments' %>
-<%= render 'comments/form' %>
+<!-- Locals ------------------------------------------------------------------->
+<p class="page-title">Locals</p>
+<div class="locals-container card">
+  <div class="local">
+    <%= image_tag('place.svg') %>
+    <p><span>Paris</span></p>
+  </div>
+
+  <div class="local">
+    <%= image_tag('place.svg') %>
+    <p><span>London</span></p>
+  </div>
+</div>
+
+<!-- Itinerary ---------------------------------------------------------------->
+<p class="page-title">Itinerary</p>
+<div class="itinerary-container">
+
+  <div class="day card">
+    <div class="day-header">
+      <p>1 - 01/07/2018</p>
+    </div>
+    <div class="place">
+      <div class="row">
+        <div class="col">
+          <%= image_tag('place.svg') %>
+        </div>
+        <div class="col">
+          <p><span>Arco do Triufo</span></p>
+          <p>10:00 - 23:00</p>
+          <p>€ 12</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-add-place">
+      <button type="button" class="btn"><i class="fa fa-5x fa-plus"></i></button>
+    </div>
+  </div>
+
+  <div class="day card">
+    <div class="day-header">
+      <p>2 - 02/07/2018</p>
+    </div>
+    <div class="place">
+      <div class="row">
+        <div class="col">
+          <%= image_tag('place.svg') %>
+        </div>
+        <div class="col">
+          <p><span>London Eye</span></p>
+          <p>10:00 - 20:30</p>
+          <p>£ 22,45</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-add-place">
+      <button type="button" class="btn"><i class="fa fa-5x fa-plus"></i></button>
+    </div>
+  </div>
+
+  <div class="container-add-day">
+    <button type="button" class="btn"><i class="fa fa-5x fa-plus"></i></button>
+  </div>
+
+</div>
+
+<!----------------------------------------------------------------------------->

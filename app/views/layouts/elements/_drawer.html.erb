@@ -11,9 +11,6 @@
     <a class="mdl-navigation__link <% if controller.controller_name == "trips" %>active<%end%>" href="#">
       <i class="material-icons">map</i>My Trips
     </a>
-    <% @trips.each do |trip| %>
-      <%= link_to(trip.name, trip_path(trip), :class=>"mdl-navigation__link sub") %>
-    <% end %>
 
     <!-- My Locals -->
     <a class="mdl-navigation__link <% if controller.controller_name == "locals" %>active<%end%>" href="#">
@@ -27,3 +24,5 @@
 
   </nav>
 </div>
+
+<!----------------------------------------------------------------------------->
