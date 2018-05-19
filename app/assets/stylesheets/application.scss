@@ -4,9 +4,10 @@
 @import "base/global.scss";
 
 html, body {
-  background: #F5F5F5;
+  background: $light-grey;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
+
 ::selection {
   background: $primary-color;
   color: $white;
@@ -15,6 +16,7 @@ html, body {
   background: $primary-color;
   color: $white;
 }
+
 a {
   color: $primary-color;
 }
@@ -28,32 +30,72 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /******************************************************************************
- * Drawer                                                                     *
+ * Header                                                                     *
  ******************************************************************************/
-.mdl-layout__drawer {
-  background: #F5F5F5;
+.mdl-layout__drawer-button {
+  margin: 3px 0 0 8px !important;
 }
-.drawer_header {
-  background: #FFFFFF;
-  height: 128px;
-  margin-bottom: 4px;
+.logo-image {
+  height: 32px;
+  margin: 0 -1px 0 -8px;
 }
-.mdl-navigation {
-  background: #FFFFFF;
+.header-title {
+  color: $white;
+  font-size: 24px;
 }
 
 /******************************************************************************
- * Content                                                                     *
+ * Drawer                                                                     *
+ ******************************************************************************/
+.mdl-layout__drawer {
+  background: $light-grey;
+  border: none;
+}
+.drawer-header {
+  background: $primary-color;
+  height: 128px;
+  text-align: center;
+  img {
+    background: $white;
+    height: 64px;
+    margin: 19px 0 8px 0;
+    border-radius: 50%;
+  }
+  p {
+    color: $white;
+    font-size: 16px;
+  }
+}
+.mdl-navigation {
+  background: $white;
+  padding: 0 !important;
+}
+.mdl-navigation__link {
+  padding: 16px !important;
+  i {
+    margin-right: 15px;
+  }
+  &.sub {
+    padding: 8px 16px 8px 59px !important;
+  }
+  &.active {
+    color: $primary-color !important;
+    border-left: 4px solid $primary-color;
+  }
+}
+
+/******************************************************************************
+ * Content                                                                    *
  ******************************************************************************/
 main {
-  padding: 32px;
+  padding: 30px;
 }
 
 /******************************************************************************
  * Footer                                                                     *
  ******************************************************************************/
 footer a {
-  color: #FFFFFF !important;
+  color: $white !important;
   transition: color 0.2s;
   margin-left: 240px;
   @media screen and (max-width: 1024px) {
