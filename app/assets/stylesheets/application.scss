@@ -47,15 +47,41 @@ h1, h2, h3, h4, h5, h6 {
  ******************************************************************************/
 .mdl-layout__drawer {
   background: $light-grey;
+  border: none;
 }
-.drawer_header {
-  background: #FFFFFF;
+.drawer-header {
+  background: $primary-color;
   height: 128px;
-  margin-bottom: 4px;
+  text-align: center;
+  img {
+    background: $white;
+    height: 64px;
+    margin: 19px 0 8px 0;
+    border-radius: 50%;
+  }
+  p {
+    color: $white;
+    font-size: 16px;
+  }
 }
 .mdl-navigation {
-  background: #FFFFFF;
+  background: $white;
+  padding: 0 !important;
 }
+.mdl-navigation__link {
+  padding: 16px !important;
+  i {
+    margin-right: 15px;
+  }
+  &.sub {
+    padding: 8px 16px 8px 59px !important;
+  }
+  &.active {
+    color: $primary-color !important;
+    border-left: 4px solid $primary-color;
+  }
+}
+
 
 /******************************************************************************
  * Content                                                                     *
@@ -68,7 +94,7 @@ main {
  * Footer                                                                     *
  ******************************************************************************/
 footer a {
-  color: #FFFFFF !important;
+  color: $white !important;
   transition: color 0.2s;
   margin-left: 240px;
   @media screen and (max-width: 1024px) {

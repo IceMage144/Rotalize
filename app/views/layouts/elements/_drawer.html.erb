@@ -2,12 +2,28 @@
 <!-- Drawer                                                                  -->
 <!----------------------------------------------------------------------------->
 <div class="mdl-layout__drawer">
-  <header class="drawer_header">
-    <i class="material-icons">person</i>USER
+  <header class="drawer-header">
+    <%= image_tag('user.svg', :class=>"drawer-image") %>
+    <p>Username</p>
   </header>
   <nav class="mdl-navigation">
-    <a class="mdl-navigation__link" href="#"><i class="material-icons">place</i>Meus Locais</a>
-    <a class="mdl-navigation__link" href="#"><i class="material-icons">map</i>Minhas Viagens</a>
-    <a class="mdl-navigation__link" href="#"><i class="material-icons">exit_to_app</i>Sair</a>
+    <!-- My Trips -->
+    <a class="mdl-navigation__link <% if controller.controller_name == "trips" %>active<%end%>" href="#">
+      <i class="material-icons">map</i>My Trips
+    </a>
+    <% @trips.each do |trip| %>
+      <%= link_to(trip.name, trip_path(trip), :class=>"mdl-navigation__link sub") %>
+    <% end %>
+
+    <!-- My Locals -->
+    <a class="mdl-navigation__link <% if controller.controller_name == "locals" %>active<%end%>" href="#">
+      <i class="material-icons">place</i>My Locals
+    </a>
+
+    <!-- Exit -->
+    <%= link_to(destroy_user_session_path, :class=>"mdl-navigation__link") do %>
+      <i class="material-icons">exit_to_app</i>Exit
+    <% end %>
+
   </nav>
 </div>
