@@ -12,11 +12,6 @@
       <i class="material-icons">map</i>My Trips
     </a>
 
-    <!-- My Locals -->
-    <a class="mdl-navigation__link <% if controller.controller_name == "locals" %>active<%end%>" href="#">
-      <i class="material-icons">place</i>My Locals
-    </a>
-
     <!-- Exit -->
     <%= link_to(destroy_user_session_path, class: "mdl-navigation__link") do %>
       <i class="material-icons">exit_to_app</i>Exit
