@@ -17,6 +17,11 @@ html, body {
   color: $white;
 }
 
+.form-control:focus {
+  border-color: $lighter-color;
+  box-shadow: none;
+}
+
 a {
   color: $primary-color;
 }

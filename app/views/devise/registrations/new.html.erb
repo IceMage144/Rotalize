@@ -15,9 +15,15 @@
           </div>
         <% end %>
 
-        <div id="email-container" class="md-form">
+        <div id="name-container" class="md-form">
+          <i class="fa fa-user prefix"></i>
+          <%= f.text_field(:name, autofocus: true, autocomplete: "name", :class => 'form-control') %>
+          <%= f.label(:name) %>
+        </div>
+
+        <div id="email-container" class="md-form signup">
           <i class="fa fa-envelope prefix"></i>
-          <%= f.email_field(:email, autofocus: true, autocomplete: "email", :class => 'form-control') %>
+          <%= f.email_field(:email, autocomplete: "email", :class => 'form-control') %>
           <%= f.label(:email) %>
         </div>
 

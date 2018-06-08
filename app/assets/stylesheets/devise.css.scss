@@ -6,6 +6,9 @@
 html, body {
   background: $primary-color;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  @media screen and (max-width: 640px) {
+    background: $white;
+  }
 }
 
 /******************************************************************************
@@ -19,6 +22,14 @@ html, body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  @media screen and (max-width: 640px) {
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    box-shadow: none;
+  }
 }
 .header {
   background: $darker-color;
@@ -37,8 +48,11 @@ html, body {
 /******************************************************************************
  * Inputs                                                                     *
  ******************************************************************************/
+#email-container.signup {
+ margin: 43px 0 6px 0;
+}
 #password-container {
-  margin: 43px 0 6px 0;
+ margin: 43px 0 6px 0;
 }
 #password_confirmation-container {
   margin: 43px 0 33px 0;
