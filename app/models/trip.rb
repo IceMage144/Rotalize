@@ -3,5 +3,5 @@ class Trip < ApplicationRecord
 	belongs_to :user
 	validates :name, presence: true
 	validates :beginning, presence: true
-	validates :durarion, presence: true
+	validates :duration, presence: true
 end

@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Day, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:all) do
+    @day = build_stubbed(:day)
+  end
+
+  it "is valid with valid attributes" do
+    expect(@day).to be_valid
+  end
+
 end

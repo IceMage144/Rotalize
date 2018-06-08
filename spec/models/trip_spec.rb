@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Trip, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:all) do
+    @trip = build_stubbed(:trip)
+  end
+
+  it "is valid with valid attributes" do
+    expect(@trip).to be_valid
+  end
 end
