@@ -2,7 +2,9 @@ FactoryBot.define do
 
   factory :user do
     name "Joe"
-    email "joe@gmail.com"
+    sequence :email do |e|
+      "#{e}@gmail.com"
+    end
     password "rotalize"
   end
 

@@ -1,5 +1,5 @@
 class Day < ApplicationRecord
-  has_many :places
   belongs_to :trip
+  has_and_belongs_to_many :places
   validates :date, presence: true
 end

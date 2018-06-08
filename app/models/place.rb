@@ -1,5 +1,6 @@
 class Place < ApplicationRecord
   belongs_to :local
+  has_and_belongs_to_many :days
   validates :name, presence: true
   validates :placetype, presence: true
   validates :opentime, presence: true
