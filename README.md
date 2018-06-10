@@ -6,6 +6,7 @@ Our aim is to create a site where you can create and manage your own travel itin
 Web application framework: Ruby on Rails
 
 Database management system: PostgreSQL
+
 Containerization tool: Docker
 
 ## Documentation:
@@ -27,7 +28,12 @@ systemctl stop postgresql
 ```
 
 ## How to run the automated tests:
-TO-DO
+You can run the tests by using the following command:
+```
+sudo docker-compose app run rspec <folder>
+```
+were folder can be any folder inside `./spec`, e.g. `./spec/models/*`
+
 
 ## Deliveries:
 ### First delivery (19/05/2018):

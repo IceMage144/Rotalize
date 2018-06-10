@@ -19,9 +19,10 @@
       <%= f.label(:duration, :class=>"disabled") %><br>
       <%= f.text_field(:duration, :class=>'form-control') %>
     </div>
-    <div id="submit" class="btn btn-primary">
-      <%= f.submit("Save") %>
-    </div>
+
+    <button id="submit" class="btn">
+      <%= f.submit('Save') %>
+    </button>
   </div>
 <% end %>
 
@@ -49,7 +50,7 @@
   <% @days.each_with_index do |day, i| %>
     <div class="day card">
       <div class="day-header">
-        <p><%"#{i} - #{day.date}"%></p>
+        <p><%= "#{i} - #{day.date + i}" %></p>
       </div>
       <% @places[i].size.times do |j| %>
         <div class="place">
@@ -83,7 +84,8 @@
 
     <div class="container-add-day">
       <button id="submit" class="btn">
-        <%= f.submit('<i class="fa fa-5x fa-plus"></i>', style: "opacity: 0") %>
+        <i class="fa fa-5x fa-plus"></i>
+        <%= f.submit('', :hidden => true) %>
       </button>
     </div>
   <% end %>

@@ -31,9 +31,11 @@
 
     <div class="container-add-trip">
       <button id="submit" class="btn">
-        <%= f.submit('<i class="fa fa-5x fa-plus"></i>', style: "opacity: 0") %>
+        <i class="fa fa-5x fa-plus"></i>
+        <%= f.submit('', :hidden => true) %>
       </button>
     </div>
+
   <% end %>
 </div>
 

@@ -23,7 +23,7 @@ class TripsController < ApplicationController
     @trip = Trip.new
   end
 
-  # GET /trips/1/editatom://teletype/portal/e24acef5-a5d4-499a-a7ad-f1ea37d5dceb
+  # GET /trips/1/edit
   def edit
   end
 

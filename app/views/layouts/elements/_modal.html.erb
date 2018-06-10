@@ -1,63 +1,44 @@
 <!--=========================================================================-->
 <!--= Modal                                                                 =-->
 <!--=========================================================================-->
-<div id="modal" class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+
+<div id="modal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add Place</h5>
       </div>
       <div class="modal-body">
-
         <!-- Pesquisa -->
         <div class="search-bar-container">
           <label for="search-bar"><i class="fa fa-search"></i></label>
           <input id="search-bar" type="text" class="form-control search-bar">
         </div>
 
-        <!-- Local -->
-        <div class="modal-local">
-          <div class="header waves-light" data-toggle="collapse" data-target="#collapseOne">
-            <%= image_tag('place.svg') %> <p>Paris</p>
+        <% count = 0 %>
+        <% Local.all.each_with_index do |local, i| %>
+          <!-- Local -->
+          <div class="modal-local">
+            <%= content_tag(:div, "", class: "header waves-light", "data-toggle": "collapse", "data-target": "#collapse#{i}") do %>
+              <%= image_tag("place.svg") %>
+              <p><%= local.name %></p>
+            <% end %>
+            <%= content_tag(:div, "", id: "collapse#{i}", class: "collapse show") do %>
+              <!-- Lugar -->
+              <% local.places.all.each do |place| %>
+                <%= content_tag(:label, "", class: "modal-place mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect", for: "checkbox-#{count}") do %>
+                  <%= content_tag(:input, "", id: "checkbox-#{count}", type:"checkbox", class: "mdl-checkbox__input") %>
+                  <span class="mdl-checkbox__label"><%= place.name %></span>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+            <% end %>
           </div>
-          <div id="collapseOne" class="collapse show">
-            <!-- Lugar -->
-            <label class="modal-place mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-              <input id="checkbox-1" type="checkbox" class="mdl-checkbox__input">
-              <span class="mdl-checkbox__label">Arco do Triunfo</span>
-            </label>
-
-            <!-- Lugar -->
-            <label class="modal-place mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
-              <input id="checkbox-2" type="checkbox" class="mdl-checkbox__input">
-              <span class="mdl-checkbox__label">Torre Eiffel</span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Local -->
-        <div class="modal-local">
-          <div class="header waves-light" data-toggle="collapse" data-target="#collapseTwo">
-            <%= image_tag('place.svg') %> <p>London</p>
-          </div>
-          <div id="collapseTwo" class="collapse show">
-            <!-- Lugar -->
-            <label class="modal-place mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
-              <input id="checkbox-3" type="checkbox" class="mdl-checkbox__input">
-              <span class="mdl-checkbox__label">London Eye</span>
-            </label>
-
-            <!-- Lugar -->
-            <label class="modal-place mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-4">
-              <input id="checkbox-4" type="checkbox" class="mdl-checkbox__input">
-              <span class="mdl-checkbox__label">Museu de História Natural</span>
-            </label>
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-modal cancel" data-dismiss="modal">CANCEL</button>
-        <button type="button" class="btn btn-modal">ADD</button>
+        <button type="button" class="btn btn-modal" data-dismiss="modal">Done</button>
       </div>
     </div>
   </div>
