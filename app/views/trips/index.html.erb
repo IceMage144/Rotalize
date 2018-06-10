@@ -11,7 +11,7 @@
       <div class="trip card">
         <p class="name"><span><%= trip.name %><span/></p>
         <div class="info">
-          <p><span>Beginning:</span> <%= trip.beginning %></p>
+          <p><span>Beginning:</span> <%= trip.beginning.strftime("%d/%m/%Y") %></p>
           <p><span>Durarion:</span> <%= trip.duration %> days</p>
         </div>
       </div>

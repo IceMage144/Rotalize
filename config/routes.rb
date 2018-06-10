@@ -4,13 +4,14 @@ Rails.application.routes.draw do
 
   get 'errors/internal_server_error'
 
-  root 'trips#index', as: 'home'
-  get 'request/index'
-
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#internal_server_error", :via => :all
 
   devise_for :users, :controllers => {registrations: 'registrations'}
+
   resources :trips
+  root 'trips#index', as: 'home'
+  post 'trips/:id', :to => "trips#create_day"
+
   resources :places
 end

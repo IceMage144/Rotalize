@@ -14,6 +14,8 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @days = @trip.days.all
     @places = Array.new(@days.size) { |i| @days[i].places.all }
+    @day = Day.new
+    puts "YAY show"
   end
 
   # GET /trips/new
@@ -21,14 +23,19 @@ class TripsController < ApplicationController
     @trip = Trip.new
   end
 
-  # GET /trips/1/edit
+  # GET /trips/1/editatom://teletype/portal/e24acef5-a5d4-499a-a7ad-f1ea37d5dceb
   def edit
   end
 
   # POST /trips
   # POST /trips.json
   def create
-    @trip = Trip.new({"user" => current_user})
+    @trip = Trip.new({"name" => "New Trip",
+                      "beginning" => Time.now.strftime("%d/%m/%Y"),
+                      "duration" => "0",
+                      "user" => current_user})
+
+    puts "Yay nay"
 
     respond_to do |format|
       if @trip.save
@@ -39,6 +46,26 @@ class TripsController < ApplicationController
         print "ignored"
         format.html { render home_path }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /trips/1
+  # POST /trips/1.json
+  def create_day
+    puts "YAY #{params[:id]}"
+    trip = Trip.find(params[:id])
+    @day = Day.new({"date" => trip.beginning , "trip" => trip})
+
+    respond_to do |format|
+      if @day.save
+        puts "saved"
+        format.html { redirect_to trip, notice: 'Day was successfully created.' }
+        format.json { render :show, status: :created, location: @day }
+      else
+        puts "ignored"
+        format.html { render home_path }
+        format.json { render json: @day.errors, status: :unprocessable_entity }
       end
     end
   end

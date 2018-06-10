@@ -19,6 +19,9 @@
       <%= f.label(:duration, :class=>"disabled") %><br>
       <%= f.text_field(:duration, :class=>'form-control') %>
     </div>
+    <div id="submit" class="btn btn-primary">
+      <%= f.submit("Save") %>
+    </div>
   </div>
 <% end %>
 
@@ -48,7 +51,7 @@
       <div class="day-header">
         <p><%"#{i} - #{day.date}"%></p>
       </div>
-      <% @days.size.times do |j| %>
+      <% @places[i].size.times do |j| %>
         <div class="place">
           <div class="row">
             <div class="col">
@@ -69,9 +72,21 @@
 
   </div>
 
-  <div class="container-add-day">
-    <button type="button" class="btn"><i class="fa fa-5x fa-plus"></i></button>
-  </div>
+  <%= form_for(@day, url: trip_path) do |f| %>
+    <% if @day.errors.any? %>
+      <ul>
+        <% @day.errors.full_messages.each do |msg| %>
+          <li><% puts "#{msg}" %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="container-add-day">
+      <button id="submit" class="btn">
+        <%= f.submit('<i class="fa fa-5x fa-plus"></i>', style: "opacity: 0") %>
+      </button>
+    </div>
+  <% end %>
 
 </div>
 
