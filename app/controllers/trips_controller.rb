@@ -4,12 +4,16 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all
+    @trips = Trip.where(user: current_user)
+    @trip = Trip.new
   end
 
   # GET /trips/1
   # GET /trips/1.json
   def show
+    @trip = Trip.find(params[:id])
+    @days = @trip.days.all
+    @places = Array.new(@days.size) { |i| @days[i].places.all }
   end
 
   # GET /trips/new
@@ -24,14 +28,16 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
-    @trip = Trip.new(trip_params)
+    @trip = Trip.new({"user" => current_user})
 
     respond_to do |format|
       if @trip.save
+        print "saved"
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
-        format.html { render :new }
+        print "ignored"
+        format.html { render home_path }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +75,6 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:name, :beginning, :duration)
+      params.require(:trip).permit(:name, :beginning, :duration, :user)
     end
 end

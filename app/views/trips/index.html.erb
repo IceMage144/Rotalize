@@ -9,7 +9,7 @@
   <% @trips.each do |trip| %>
     <%= link_to(trip_path(trip)) do %>
       <div class="trip card">
-        <p class="name"><span><%= trip.name %><span></p>
+        <p class="name"><span><%= trip.name %><span/></p>
         <div class="info">
           <p><span>Beginning:</span> <%= trip.beginning %></p>
           <p><span>Durarion:</span> <%= trip.duration %> days</p>
@@ -19,8 +19,23 @@
   <% end %>
 </div>
 
-<div class="container-add-trip">
-  <button type="button" class="btn"><i class="fa fa-5x fa-plus"></i></button>
+<div class="content">
+  <%= form_for(@trip, url: trips_path) do |f| %>
+    <% if @trip.errors.any? %>
+      <ul>
+        <% @trip.errors.full_messages.each do |msg| %>
+          <li><% puts "#{msg}" %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="container-add-trip">
+      <button id="submit" class="btn">
+        <%= f.submit('<i class="fa fa-5x fa-plus"></i>', style: "opacity: 0") %>
+      </button>
+    </div>
+  <% end %>
 </div>
+
 
 <!--=========================================================================-->

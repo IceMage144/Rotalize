@@ -17,13 +17,13 @@
     </div>
     <div class="input last">
       <%= f.label(:duration, :class=>"disabled") %><br>
-      <%= f.text_field(:duration, :class=>'form-control', disabled: true) %>
+      <%= f.text_field(:duration, :class=>'form-control') %>
     </div>
   </div>
 <% end %>
 
 <!--= Locals ================================================================-->
-<p class="page-title">Locals</p>
+<!-- <p class="page-title">Locals</p>
 <div class="locals-container card">
   <div class="local">
     <%= image_tag('place.svg') %>
@@ -34,65 +34,39 @@
     <%= image_tag('place.svg') %>
     <p><span>London</span></p>
   </div>
-</div>
+</div> -->
 
-<!--= Itinerary =============================================================-->
+
+
+<!--= Itinerary ============================================================-->
+
 <p class="page-title">Itinerary</p>
 <div class="itinerary-container">
 
-  <div class="day card">
-    <div class="day-header">
-      <p>1 - 01/07/2018</p>
-    </div>
-    <div class="place">
-      <div class="row">
-        <div class="col">
-          <%= image_tag('place.svg') %>
-        </div>
-        <div class="col">
-          <p><span>Arco do Triunfo</span></p>
-          <p>10:00 - 23:00</p>
-          <p>€ 12</p>
-        </div>
+  <% @days.each_with_index do |day, i| %>
+    <div class="day card">
+      <div class="day-header">
+        <p><%"#{i} - #{day.date}"%></p>
       </div>
-    </div>
+      <% @days.size.times do |j| %>
+        <div class="place">
+          <div class="row">
+            <div class="col">
+              <%= image_tag('place.svg') %>
+            </div>
+            <div class="col">
+              <p><span><% @places[i][j].name %></span></p>
+              <p><% "#{@places[i][j].opentime.strftime('%H:%M')} - #{@places[i][j].closetime.strftime('%H:%M')}" %></p>
+              <p>€ <% @places[i][j].price %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="container-add-place">
+        <button type="button" class="btn" data-toggle="modal" data-target="#modal"><i class="fa fa-5x fa-plus"></i></button>
+      </div>
+    <% end %>
 
-    <div class="place">
-      <div class="row">
-        <div class="col">
-          <%= image_tag('place.svg') %>
-        </div>
-        <div class="col">
-          <p><span>Torre Eiffel</span></p>
-          <p>09:00 - 00:00</p>
-          <p>€ 17</p>
-        </div>
-      </div>
-    </div>
-    <div class="container-add-place">
-      <button type="button" class="btn" data-toggle="modal" data-target="#modal"><i class="fa fa-5x fa-plus"></i></button>
-    </div>
-  </div>
-
-  <div class="day card">
-    <div class="day-header">
-      <p>2 - 02/07/2018</p>
-    </div>
-    <div class="place">
-      <div class="row">
-        <div class="col">
-          <%= image_tag('place.svg') %>
-        </div>
-        <div class="col">
-          <p><span>London Eye</span></p>
-          <p>10:00 - 20:30</p>
-          <p>£ 22,45</p>
-        </div>
-      </div>
-    </div>
-    <div class="container-add-place">
-      <button type="button" class="btn" data-toggle="modal" data-target="#modal"><i class="fa fa-5x fa-plus"></i></button>
-    </div>
   </div>
 
   <div class="container-add-day">
@@ -100,5 +74,7 @@
   </div>
 
 </div>
+
+
 
 <!--=========================================================================-->

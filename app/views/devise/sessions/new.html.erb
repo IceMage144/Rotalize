@@ -45,11 +45,11 @@
           <%= f.submit("Enter") %>
         </button>
 
-        <button id="other" class="btn btn-block">
+        <div id="other" class="btn btn-block">
           <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
             <%= link_to("Sign up", new_registration_path(resource_name)) %>
           <% end -%>
-        </button>
+        </div>
 
       <% end %>
     </div>

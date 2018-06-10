@@ -8,9 +8,9 @@
   </header>
   <nav class="mdl-navigation">
     <!-- My Trips -->
-    <a class="mdl-navigation__link <% if controller.controller_name == "trips" %>active<%end%>" href="#">
+    <%= link_to home_path, class: 'mdl-navigation__link' + (if controller.controller_name == "trips" then " active" else "" end) do %>
       <i class="material-icons">map</i>My Trips
-    </a>
+    <% end %>
 
     <!-- Exit -->
     <%= link_to(destroy_user_session_path, class: "mdl-navigation__link") do %>
