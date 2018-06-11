@@ -19,7 +19,7 @@
       <%= f.label(:duration, :class=>"disabled") %><br>
       <%= f.text_field(:duration, :class=>'form-control') %>
     </div>
-
+    <%= link_to 'Delete This', @trip.destroy, method: :delete, class: "btn btn-danger" %>
     <button id="submit" class="btn">
       <%= f.submit('Save') %>
     </button>

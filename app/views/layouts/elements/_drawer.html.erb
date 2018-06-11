@@ -4,7 +4,7 @@
 <div class="mdl-layout__drawer">
   <header class="drawer-header">
     <%= image_tag('user.svg', :class=>"drawer-image") %>
-    <p>Username</p>
+    <%= content_tag(:p, current_user.name)%>
   </header>
   <nav class="mdl-navigation">
     <!-- My Trips -->
