@@ -1,14 +1,14 @@
 class CreatePlaces < ActiveRecord::Migration[5.1]
   def change
     create_table :places do |t|
-      t.string :name
+      t.integer :local_id
+      t.string  :name
       t.integer :placetype
-      t.time :opentime
-      t.time :closetime
-      t.string :img
-      t.string :description
-      t.string :address
-      t.float :price
+      t.string  :description
+      t.string  :address
+      t.string  :openinghours
+      t.string  :price
+      t.string  :img
 
       t.timestamps
     end

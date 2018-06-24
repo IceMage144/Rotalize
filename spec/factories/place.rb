@@ -3,8 +3,7 @@ FactoryBot.define do
   factory :place do
       name "Bob's bistro"
       placetype 0
-      opentime Time.now
-      closetime Time.now
+      openinghours "10:00 - 18:00"
       img "bob"
       description "A nice place to visit"
       address "Rua do Matão 1010"
@@ -16,8 +15,7 @@ FactoryBot.define do
   factory :restaurant, class: Place do
       name "Bob's bistro 2"
       placetype 0
-      opentime Time.now
-      closetime Time.now
+      openinghours "10:00 - 18:00"
       img "bob2"
       description "A nice place to visit too"
       address "Rua do Matão 1011"
