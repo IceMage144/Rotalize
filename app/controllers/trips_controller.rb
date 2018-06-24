@@ -56,7 +56,8 @@ class TripsController < ApplicationController
     puts "YAY #{params[:id]}"
     trip = Trip.find(params[:id])
     @day = Day.new({"date" => trip.beginning , "trip" => trip})
-
+    trip.update_attribute(:duration, trip.attributes['duration'] + 1)
+    trip.save
     respond_to do |format|
       if @day.save
         puts "saved"
@@ -89,7 +90,7 @@ class TripsController < ApplicationController
   def destroy
     @trip.days.all.each do |day|
       day.destroy
-    end  
+    end
     @trip.destroy
     respond_to do |format|
       format.html { redirect_to trips_url, notice: 'Trip was successfully destroyed.' }

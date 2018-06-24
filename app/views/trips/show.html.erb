@@ -13,15 +13,22 @@
     </div>
     <div class="input">
       <%= f.label(:beginning) %><br>
-      <%= f.text_field(:beginning, :class=>'form-control') %>
+      <%= f.text_field(:beginning, type: 'date', :class=>'form-control') %>
     </div>
+    <!--
     <div class="input last">
       <%= f.label(:duration, :class=>"disabled") %><br>
       <%= f.text_field(:duration, :class=>'form-control') %>
     </div>
+    -->
+    <% for attribute in ['duration'] %>
+      <p><%= attribute.humanize %>:  <%= @trip.attributes[attribute].to_s %></p>
+    <% end %>
+    <div>
     <button id="submit" class="btn">
       <%= f.submit('Save') %>
     </button>
+    </div>
   </div>
 <% end %>
 
@@ -63,7 +70,8 @@
             </div>
             <div class="col">
               <p><span><% @places[i][j].name %></span></p>
-              <p><% "#{@places[i][j].opentime.strftime('%H:%M')} - #{@places[i][j].closetime.strftime('%H:%M')}" %></p>
+              <p><% @places[i][j].openinghours %></p>
+
               <p>€ <% @places[i][j].price %></p>
             </div>
           </div>
@@ -72,6 +80,10 @@
       <div class="container-add-place">
         <button type="button" class="btn" data-toggle="modal" data-target="#modal"><i class="fa fa-5x fa-plus"></i></button>
       </div>
+      <div>
+      <%= link_to "Eae meu", controller: "days", action: "show", id: day%>
+      </div>
+
     <% end %>
 
   </div>
