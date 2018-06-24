@@ -920,7 +920,7 @@ Place.create([
     address:      'Prinsengracht 279, 1016 GW',
     openinghours: '10:00 - 20:00',
     price:        '7,50€',
-    img:          'https://www.amsterdam.nl/publish/pages/799690/westerkerk_voor_restauratie.jpg'
+    img:          'http://www.simplyamsterdam.nl/img/westerkerk.jpg'
   },
 ################################################################################
 # Amsterdã - Museus                                                            #
@@ -975,7 +975,7 @@ Place.create([
   {
     id:           78,
     local_id:     3,
-    placetype:    2,
+    placetype:    3,
     name:         'Hard Rock Cafe Amsterdam',
     description:  'Restaurante Rock',
     address:      'Max Euweplein 57-61, 1017 MA',

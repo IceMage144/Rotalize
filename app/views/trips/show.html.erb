@@ -5,6 +5,7 @@
 
 <!--= Trip ==================================================================-->
 <p class="page-title">Trip</p>
+<%= button_to("delete", @trip, :method => "delete") %>
 <%= form_for :trip, url: trip_path(@trip), method: :patch do |f| %>
   <div class="trip-info-container">
     <div class="input">
@@ -13,33 +14,23 @@
     </div>
     <div class="input">
       <%= f.label(:beginning) %><br>
-      <%= f.text_field(:beginning, type: 'date', :class=>'form-control') %>
+      <%= f.text_field(:beginning, type:'date', :class=>'form-control') %>
     </div>
-    <!--
     <div class="input last">
       <%= f.label(:duration, :class=>"disabled") %><br>
-      <%= f.text_field(:duration, :class=>'form-control') %>
-    </div>
-    -->
-    <% for attribute in ['duration'] %>
-      <p><%= attribute.humanize %>:  <%= @trip.attributes[attribute].to_s %></p>
-    <% end %>
-    <div>
-    <button id="submit" class="btn">
-      <%= f.submit('Save') %>
-    </button>
+      <%= f.text_field(:duration, :class=>'form-control', disabled: true) %>
     </div>
   </div>
+  <div>
+  <button class="btn btn-block save-trip">
+    <%= f.submit("Save") %>
+  </button>
 <% end %>
 
-<div>
-  <%= button_to "delete", @trip, :method => "delete" %>
-</div>
-
 <!--= Locals ================================================================-->
-<!-- <p class="page-title">Locals</p>
+<p class="page-title">Locals</p>
 <div class="locals-container card">
-  <div class="local">
+  <!-- <div class="local">
     <%= image_tag('place.svg') %>
     <p><span>Paris</span></p>
   </div>
@@ -47,32 +38,28 @@
   <div class="local">
     <%= image_tag('place.svg') %>
     <p><span>London</span></p>
-  </div>
-</div> -->
-
-
+  </div> -->
+</div>
 
 <!--= Itinerary ============================================================-->
-
 <p class="page-title">Itinerary</p>
 <div class="itinerary-container">
 
   <% @days.each_with_index do |day, i| %>
     <div class="day card">
       <div class="day-header">
-        <p><%= "#{i} - #{day.date + i}" %></p>
+        <p><%= "#{i+1} - #{day.date.strftime('%d/%m/%Y')}" %></p>
       </div>
       <% @places[i].size.times do |j| %>
         <div class="place">
           <div class="row">
             <div class="col">
-              <%= image_tag('place.svg') %>
+              <%= image_tag(@places[i][j].img) %>
             </div>
             <div class="col">
               <p><span><% @places[i][j].name %></span></p>
               <p><% @places[i][j].openinghours %></p>
-
-              <p>€ <% @places[i][j].price %></p>
+              <p><% @places[i][j].price %></p>
             </div>
           </div>
         </div>
@@ -80,33 +67,17 @@
       <div class="container-add-place">
         <button type="button" class="btn" data-toggle="modal" data-target="#modal"><i class="fa fa-5x fa-plus"></i></button>
       </div>
-      <div>
-      <%= link_to "Eae meu", controller: "days", action: "show", id: day%>
-      </div>
-
-    <% end %>
-
-  </div>
-
-  <%= form_for(@day, url: trip_path) do |f| %>
-    <% if @day.errors.any? %>
-      <ul>
-        <% @day.errors.full_messages.each do |msg| %>
-          <li><% puts "#{msg}" %></li>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <div class="container-add-day">
-      <button id="submit" class="btn">
-        <i class="fa fa-5x fa-plus"></i>
-        <%= f.submit('', :hidden => true) %>
-      </button>
     </div>
   <% end %>
 
+  <div class="container-add-day">
+    <%= form_for(@day, url: trip_path) do |f| %>
+        <button class="btn">
+          <i class="fa fa-5x fa-plus"></i>
+          <%= f.submit('', :hidden => true) %>
+        </button>
+    <% end %>
+  </div>
 </div>
-
-
 
 <!--=========================================================================-->

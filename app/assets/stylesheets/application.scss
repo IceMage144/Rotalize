@@ -63,7 +63,9 @@ h1, h2, h3, h4, h5, h6 {
   img {
     background: $white;
     height: 64px;
+    width: 64px;
     margin: 19px 0 8px 0;
+    object-fit: cover;
     border-radius: 50%;
   }
   p {
