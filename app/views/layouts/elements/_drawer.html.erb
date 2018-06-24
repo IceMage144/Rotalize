@@ -3,6 +3,9 @@
 <!--=========================================================================-->
 <div class="mdl-layout__drawer">
   <header class="drawer-header">
+    <% if current_user.img == nil %>
+      <% current_user.update_attribute(:img, "user.svg") %>
+    <% end %>  
     <%= image_tag(current_user.img, :class=>"drawer-image") %>
     <%= content_tag(:p, current_user.name)%>
   </header>
