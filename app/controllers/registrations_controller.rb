@@ -1,15 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def update
-    respond_to do |format|
-      if current_user.update( account_update_params)
-        format.html { redirect_to current_user, notice: 'Current_user was successfully updated.' }
-        format.json { render :show, status: :ok, location: current_user }
-      else
-        format.html { render :edit }
-        format.json { render json: current_user.errors, status: :unprocessable_entity }
-      end
-    end
+    current_user.update(account_update_params)
+    redirect_to trips_url
   end
 
   private
