@@ -15,6 +15,7 @@ class TripsController < ApplicationController
     @days = @trip.days.all
     @places = Array.new(@days.size) { |i| @days[i].places.all }
     @day = Day.new
+    @user = current_user
     puts "YAY show"
   end
 

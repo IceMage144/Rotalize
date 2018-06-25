@@ -67,17 +67,23 @@
         </div>
       <% end %>
       <div class="container-add-place">
-        <button type="button" class="btn" data-toggle="modal" data-target="#modal"><i class="fa fa-5x fa-plus"></i></button>
+        <%= form_for(@user, :url => user_registration_path(current_path), :method => "put") do |f| %>
+          <%= hidden_field(:user, :selday, :value => i) %>
+          <button type="button" class="btn" data-toggle="modal" data-target="#modal">
+            <i class="fa fa-5x fa-plus"></i>
+            <%= f.submit("", :hidden => true) %>
+          </button>
+        <% end %>
       </div>
     </div>
   <% end %>
 
   <div class="container-add-day">
     <%= form_for(@day, url: trip_path) do |f| %>
-        <button class="btn">
-          <i class="fa fa-5x fa-plus"></i>
-          <%= f.submit('', :hidden => true) %>
-        </button>
+      <button class="btn">
+        <i class="fa fa-5x fa-plus"></i>
+        <%= f.submit('', :hidden => true) %>
+      </button>
     <% end %>
   </div>
 </div>
