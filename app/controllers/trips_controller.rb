@@ -82,6 +82,11 @@ class TripsController < ApplicationController
       if @trip.update(trip_params)
         format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
         format.json { render :show, status: :ok, location: @trip }
+        offset = -1
+        @trip.days.all.each do |day|
+            offset += 1
+            day.update_attribute(:date, @trip.beginning + offset)
+        end
       else
         format.html { render :edit }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
