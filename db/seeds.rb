@@ -499,7 +499,7 @@ Place.create([
     address:      'Trafalgar Square',
     openinghours: '10:00 - 18:00',
     price:        '',
-    img:          'https://pbs.twimg.com/media/DGdXX7uUAAASxm3.jpg'
+    img:          'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Galer%C3%ADa_Nacional%2C_Londres%2C_Inglaterra%2C_2014-08-07%2C_DD_035.JPG/1200px-Galer%C3%ADa_Nacional%2C_Londres%2C_Inglaterra%2C_2014-08-07%2C_DD_035.JPG'
   },
   {
     id:           38,

@@ -60,11 +60,19 @@ h1, h2, h3, h4, h5, h6 {
   background: $primary-color;
   height: 128px;
   text-align: center;
+  button {
+    height: 64px;
+    width: 64px;
+    margin: 19px 0 8px 0;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: none;
+  }
   img {
     background: $white;
     height: 64px;
     width: 64px;
-    margin: 19px 0 8px 0;
+    // margin: 19px 0 8px 0;
     object-fit: cover;
     border-radius: 50%;
   }
@@ -88,6 +96,16 @@ h1, h2, h3, h4, h5, h6 {
   &.active {
     color: $primary-color !important;
     border-left: 4px solid $primary-color;
+  }
+}
+.change-img-container {
+  .input {
+    width: 100%;
+    label {
+      color: $primary-color;
+      margin: 0 0 2px -1px;
+      font-size: 16px;
+    }
   }
 }
 
