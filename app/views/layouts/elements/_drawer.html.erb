@@ -31,25 +31,25 @@
 <div id="modalimage" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Change Image</h5>
-      </div>
-      <div class="modal-body">
-
-        <%= form_for :trip, url: trip_path(@trip), method: :patch do |f| %>
+      <%= form_for :user, url: user_registration_path(current_user), method: :put do |f| %>
+        <div class="modal-header">
+          <h5 class="modal-title">Change Image</h5>
+        </div>
+        <div class="modal-body">
           <div class="change-img-container">
             <div class="input">
-              <%= f.label(:name) %><br>
-              <%= f.text_field(:name, :class=>'form-control') %>
+              <%= f.label(:img) %><br>
+              <%= f.text_field(:img, :class=>'form-control') %>
             </div>
           </div>
-        <% end %>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-modal cancel" data-dismiss="modal">CANCEL</button>
-        <button type="button" class="btn btn-modal" data-dismiss="modal">Done</button>
-      </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-modal cancel" data-dismiss="modal">CANCEL</button>
+          <button type="button" class="btn btn-modal">
+            <%= f.submit("Save") %>
+          </button>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
