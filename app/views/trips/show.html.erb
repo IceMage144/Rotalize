@@ -5,7 +5,9 @@
 
 <!--= Trip ==================================================================-->
 <p class="page-title">Trip</p>
-<%= button_to("delete", @trip, :method => "delete") %>
+<button class="btn btn-block delete-trip">
+  <%= button_to("Delete", @trip, :method => "delete") %>
+</button>
 <%= form_for :trip, url: trip_path(@trip), method: :patch do |f| %>
   <div class="trip-info-container">
     <div class="input">
@@ -57,9 +59,9 @@
               <%= image_tag(@places[i][j].img) %>
             </div>
             <div class="col">
-              <p><span><% @places[i][j].name %></span></p>
-              <p><% @places[i][j].openinghours %></p>
-              <p><% @places[i][j].price %></p>
+              <p><span><%= @places[i][j].name %></span></p>
+              <p><%= @places[i][j].openinghours %></p>
+              <p><%= @places[i][j].price %></p>
             </div>
           </div>
         </div>
