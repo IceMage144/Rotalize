@@ -55,7 +55,11 @@ class TripsController < ApplicationController
   def create_day
     puts "YAY #{params[:id]}"
     trip = Trip.find(params[:id])
-    @day = Day.new({"date" => trip.beginning , "trip" => trip})
+    offset = 0
+    trip.days.all.each do |day|
+        offset += 1
+    end
+    @day = Day.new({"date" => trip.beginning + offset , "trip" => trip})
     trip.update_attribute(:duration, trip.attributes['duration'] + 1)
     trip.save
     respond_to do |format|
