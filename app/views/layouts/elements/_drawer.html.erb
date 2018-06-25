@@ -3,11 +3,16 @@
 <!--=========================================================================-->
 <div class="mdl-layout__drawer">
   <header class="drawer-header">
-    <% if current_user.img == nil %>
-      <% current_user.update_attribute(:img, "user.svg") %>
-    <% end %>  
-    <%= image_tag(current_user.img, :class=>"drawer-image") %>
+
+
+    <button type="button" class="btn" data-toggle="modal" data-target="#modalimage">
+      <% if current_user.img == nil %>
+        <% current_user.update_attribute(:img, "user.svg") %>
+      <% end %>
+      <%= image_tag(current_user.img, :class=>"drawer-image") %>
+    </button>
     <%= content_tag(:p, current_user.name)%>
+
   </header>
   <nav class="mdl-navigation">
     <!-- My Trips -->
@@ -19,8 +24,34 @@
     <%= link_to(destroy_user_session_path, class: "mdl-navigation__link") do %>
       <i class="material-icons">exit_to_app</i>Exit
     <% end %>
-
   </nav>
+</div>
+
+<!--=========================================================================-->
+<div id="modalimage" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Change Image</h5>
+      </div>
+      <div class="modal-body">
+
+        <%= form_for :trip, url: trip_path(@trip), method: :patch do |f| %>
+          <div class="change-img-container">
+            <div class="input">
+              <%= f.label(:name) %><br>
+              <%= f.text_field(:name, :class=>'form-control') %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-modal cancel" data-dismiss="modal">CANCEL</button>
+        <button type="button" class="btn btn-modal" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!--=========================================================================-->
