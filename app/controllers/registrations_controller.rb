@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     current_user.update(account_update_params)
-    redirect_to trips_url
+    #redirect_to trips_url
   end
 
   private

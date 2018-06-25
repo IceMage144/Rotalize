@@ -15,8 +15,6 @@
           <input id="search-bar" type="text" class="form-control search-bar">
         </div>
 
-        <p><%= current_user.selday %></p>
-
         <% count = 0 %>
         <% Local.all.each_with_index do |local, i| %>
           <!-- Local -->
@@ -39,8 +37,13 @@
         <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-modal cancel" data-dismiss="modal">CANCEL</button>
-        <button type="button" class="btn btn-modal" data-dismiss="modal">Done</button>
+        <%= form_for :day, url: update_day_path, method: :put do |f| %>
+          <%= hidden_field(:day, :locals, :value => Local.find(0)) %>
+          <button type="button" class="btn btn-modal cancel" data-dismiss="modal">CANCEL</button>
+          <button class="btn btn-modal" data-dismiss="modal">
+            <%= f.submit("Done", :hidden => true) %>
+          </button>
+        <% end %>
       </div>
     </div>
   </div>

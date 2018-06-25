@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :trips
   root 'trips#index', as: 'home'
   post 'trips/:id', :to => "trips#create_day"
+  put 'day', :to => "day#update", :as => "update_day"
 
   resources :places
 end
