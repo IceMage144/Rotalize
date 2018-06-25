@@ -5,7 +5,7 @@
 ################################################################################
 # Usuarios                                                                     #
 ################################################################################
-User.create([
+users = User.create([
   {
     id:                    0,
     name:                  'admin',
@@ -15,7 +15,6 @@ User.create([
     img:                   ''
   },
   {
-    id:                    1,
     name:                  'Goku',
     email:                 'goku@rotalize.com',
     password:              'kakaroto',
@@ -30,7 +29,7 @@ User.create([
 Local.create([
   {
     id:       0,
-    user_id:  0,
+    user_id:  users[0].id,
     name:     'Paris',
     country:  'França',
     currency: 'Euro (€)',
@@ -38,7 +37,7 @@ Local.create([
   },
   {
     id:       1,
-    user_id:  0,
+    user_id:  users[0].id,
     name:     'Londres',
     country:  'Inglaterra',
     currency: 'Libra (£)',
@@ -46,7 +45,7 @@ Local.create([
   },
   {
     id:        2,
-    user_id:  0,
+    user_id:  users[0].id,
     name:     'Bruxelas',
     country:  'Bélgica',
     currency: 'Euro (€)',
@@ -54,7 +53,7 @@ Local.create([
   },
   {
     id:       3,
-    user_id:  0,
+    user_id:  users[0].id,
     name:     'Amsterdã',
     country:  'Holanda',
     currency: 'Euro (€)',
@@ -988,10 +987,9 @@ Place.create([
 ################################################################################
 # Viagens                                                                      #
 ################################################################################
-Trip.create([
+trips = Trip.create([
   {
-    id:        0,
-    user_id:   1,
+    user_id:   users[1].id,
     name:      'Férias Julho 2018',
     beginning: Date.parse("17/07/2018"),
     duration:  14
@@ -1003,8 +1001,7 @@ Trip.create([
 ################################################################################
 Day.create([
   {
-    id:        0,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("17/07/2018"),
     place_ids: [
                 8,  # Jardim de Luxemburgo
@@ -1015,8 +1012,7 @@ Day.create([
                ]
   },
   {
-    id:        1,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("18/07/2018"),
     place_ids: [
                 19, # Museu do Louvre
@@ -1029,8 +1025,7 @@ Day.create([
                ]
   },
   {
-    id:        2,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("19/07/2018"),
     place_ids: [
                 16, # Big Ben (Palácio de Westminster)
@@ -1042,8 +1037,7 @@ Day.create([
                ]
   },
   {
-    id:        3,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("20/07/2018"),
     place_ids: [
                 35, # Museu Britânico
@@ -1055,8 +1049,7 @@ Day.create([
                ]
   },
   {
-    id:        4,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("21/07/2018"),
     place_ids: [
                 27, # London Eye
@@ -1067,8 +1060,7 @@ Day.create([
                ]
   },
   {
-    id:        5,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("22/07/2018"),
     place_ids: [
                 36, # Museu de História Natural
@@ -1080,8 +1072,7 @@ Day.create([
                ]
   },
   {
-    id:        6,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("23/07/2018"),
     place_ids: [
                 50, # Atomium
@@ -1093,8 +1084,7 @@ Day.create([
                ]
   },
   {
-    id:        7,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("24/07/2018"),
     place_ids: [
                 53, # Grand Place
@@ -1111,8 +1101,7 @@ Day.create([
                ]
   },
   {
-    id:        8,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("25/07/2018"),
     place_ids: [
                 74, # Casa da Anne Frank
@@ -1122,8 +1111,7 @@ Day.create([
                ]
   },
   {
-    id:        9,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("26/07/2018"),
     place_ids: [
                 76, # Rijksmuseum
@@ -1135,8 +1123,7 @@ Day.create([
                ]
   },
   {
-    id:        10,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("27/07/2018"),
     place_ids: [
                 17, # Torre Eiffel
@@ -1145,8 +1132,7 @@ Day.create([
                ]
   },
   {
-    id:        11,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("28/07/2018"),
     place_ids: [
                 11, # Palácio de Versalhes
@@ -1155,8 +1141,7 @@ Day.create([
                ]
   },
   {
-    id:        12,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("29/07/2018"),
     place_ids: [
                 0,  # Arco do Triunfo
@@ -1165,8 +1150,7 @@ Day.create([
                ]
   },
   {
-    id:        13,
-    trip_id:   0,
+    trip_id:   trips[0].id,
     date:      Date.parse("30/07/2018"),
     place_ids: [
                 5   # Disneyland
