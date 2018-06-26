@@ -14,35 +14,41 @@
           <label for="search-bar"><i class="fa fa-search"></i></label>
           <input id="search-bar" type="text" class="form-control search-bar">
         </div>
-
-        <% count = 0 %>
-        <% Local.all.each_with_index do |local, i| %>
-          <!-- Local -->
-          <div class="modal-local">
-            <%= content_tag(:div, "", class: "header waves-light", "data-toggle": "collapse", "data-target": "#collapse#{i}") do %>
-              <%= image_tag("place.svg") %>
-              <p><%= local.name %></p>
-            <% end %>
-            <%= content_tag(:div, "", id: "collapse#{i}", class: "collapse show") do %>
-              <!-- Lugar -->
-              <% local.places.all.each do |place| %>
-                <%= content_tag(:label, "", class: "modal-place mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect", for: "checkbox-#{count}") do %>
-                  <%= content_tag(:input, "", id: "checkbox-#{count}", type:"checkbox", class: "mdl-checkbox__input") %>
-                  <span class="mdl-checkbox__label"><%= place.name %></span>
-                <% end %>
-                <% count += 1 %>
+        <%= form_for :day, url: update_day_path(:day), method: :put do |f| %>
+          <% count = 0 %>
+          <% Local.all.each_with_index do |local, i| %>
+            <!-- Local -->
+            <div class="modal-local">
+              <%= content_tag(:div, "", class: "header waves-light", "data-toggle": "collapse", "data-target": "#collapse#{i}") do %>
+                <%= image_tag("place.svg") %>
+                <p><%= local.name %></p>
               <% end %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <%= form_for :day, url: update_day_path, method: :put do |f| %>
-          <%= hidden_field(:day, :locals, :value => Local.find(0)) %>
+              <%= content_tag(:div, "", id: "collapse#{i}", class: "collapse show") do %>
+                <!-- Lugar -->
+                <% f.collection_check_boxes(:place_ids, local.places.all, :id, :name) do |b| %>
+                  <span>
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </span>
+                <% end %>
+                <!--% local.places.all.each do |place| %-->
+                  <!--%= content_tag(:label, "", class: "modal-place mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect", for: "checkbox-#{count}") do %-->
+                    <!--%= content_tag(:input, "", id: "checkbox-#{count}", type:"checkbox", class: "mdl-checkbox__input") %-->
+                    <!-- <span class="mdl-checkbox__label"> --> <!--%= place.name %--> <!-- </span> -->
+                  <!--% end %-->
+                  <!--% count += 1 %-->
+                <!--% end %-->
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <%= hidden_field(:day, :places, :value => 1) %>
           <button type="button" class="btn btn-modal cancel" data-dismiss="modal">CANCEL</button>
           <button class="btn btn-modal" data-dismiss="modal">
-            <%= f.submit("Done", :hidden => true) %>
+            DONE
           </button>
+          <%= f.submit("RAPHAEL MUDA ISSO") %>
         <% end %>
       </div>
     </div>

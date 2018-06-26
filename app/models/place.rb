@@ -9,4 +9,8 @@ class Place < ApplicationRecord
   # validates :openinghours, presence: true
   # validates :price,        presence: true
   # validates :img,          presence: true
+
+  def get_name
+    return "#{name}"
+  end
 end

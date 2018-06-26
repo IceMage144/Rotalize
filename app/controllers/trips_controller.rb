@@ -16,7 +16,6 @@ class TripsController < ApplicationController
     @places = Array.new(@days.size) { |i| @days[i].places.all }
     @day = Day.new
     @user = current_user
-    puts "YAY show"
   end
 
   # GET /trips/new
@@ -36,15 +35,11 @@ class TripsController < ApplicationController
                       "duration" => "0",
                       "user" => current_user})
 
-    puts "Yay nay"
-
     respond_to do |format|
       if @trip.save
-        print "saved"
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
-        print "ignored"
         format.html { render home_path }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
@@ -54,7 +49,6 @@ class TripsController < ApplicationController
   # POST /trips/1
   # POST /trips/1.json
   def create_day
-    puts "YAY #{params[:id]}"
     trip = Trip.find(params[:id])
     offset = 0
     trip.days.all.each do |day|
@@ -65,11 +59,9 @@ class TripsController < ApplicationController
     trip.save
     respond_to do |format|
       if @day.save
-        puts "saved"
         format.html { redirect_to trip, notice: 'Day was successfully created.' }
         format.json { render :show, status: :created, location: @day }
       else
-        puts "ignored"
         format.html { render home_path }
         format.json { render json: @day.errors, status: :unprocessable_entity }
       end
