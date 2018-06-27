@@ -8,13 +8,8 @@
       <div class="modal-header">
         <h5 class="modal-title">Add Place</h5>
       </div>
-      <div class="modal-body">
-        <!-- Pesquisa -->
-        <div class="search-bar-container">
-          <label for="search-bar"><i class="fa fa-search"></i></label>
-          <input id="search-bar" type="text" class="form-control search-bar">
-        </div>
-        <%= form_for :day, url: update_day_path(:day), method: :put do |f| %>
+      <%= form_for :day, url: update_day_path(:day), method: :put do |f| %>
+        <div class="modal-body">
           <% count = 0 %>
           <% Local.all.each_with_index do |local, i| %>
             <!-- Local -->
@@ -45,12 +40,11 @@
         <div class="modal-footer">
           <%= hidden_field(:day, :places, :value => 1) %>
           <button type="button" class="btn btn-modal cancel" data-dismiss="modal">CANCEL</button>
-          <button class="btn btn-modal" data-dismiss="modal">
-            DONE
-          </button>
-          <%= f.submit("RAPHAEL MUDA ISSO") %>
+          <div class="btn btn-modal save-img-btn">
+            <%= f.submit("Done") %>
+          </div>
+        </div>
         <% end %>
-      </div>
     </div>
   </div>
 </div>

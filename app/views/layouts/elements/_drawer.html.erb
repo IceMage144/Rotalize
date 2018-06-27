@@ -3,16 +3,13 @@
 <!--=========================================================================-->
 <div class="mdl-layout__drawer">
   <header class="drawer-header">
-
-
     <button type="button" class="btn" data-toggle="modal" data-target="#modalimage">
-      <% if current_user.img == nil %>
+      <% if current_user.img == nil or current_user.img == '' %>
         <% current_user.update_attribute(:img, "user.svg") %>
       <% end %>
-      <%= image_tag(current_user.img, :class=>"drawer-image") %>
+      <%= image_tag(current_user.img, :class=>"drawer-image", :id=>'user-img') %>
     </button>
     <%= content_tag(:p, current_user.name)%>
-
   </header>
   <nav class="mdl-navigation">
     <!-- My Trips -->
@@ -33,23 +30,33 @@
     <div class="modal-content">
       <%= form_for :user, url: user_registration_path(current_user), method: :put do |f| %>
         <div class="modal-header">
-          <h5 class="modal-title">Change Image</h5>
+          <h5 class="modal-title">Change your Image</h5>
         </div>
         <div class="modal-body">
           <div class="change-img-container">
             <div class="input">
-              <%= f.label(:img) %><br>
-              <%= f.text_field(:img, :class=>'form-control') %>
+              <%= f.label("Image URL") %><br>
+              <%= f.text_field(:img, :class=>'form-control', :id=>'user-img-url') %>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-modal cancel" data-dismiss="modal">CANCEL</button>
-          <%= f.submit("Save") %>
+          <button type="button" class="btn btn-modal cancel-img-btn" data-dismiss="modal">CANCEL</button>
+          <div class="btn btn-modal save-img-btn">
+            <%= f.submit("Save", :id=>'save-user-img') %>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
+<!--=========================================================================-->
+<script>
+$('#save-user-img').click(function() {
+  $('#user-img').attr('src', $('#user-img-url').val());
+  $('#modalimage').modal('hide');
+});
+</script>
 
 <!--=========================================================================-->

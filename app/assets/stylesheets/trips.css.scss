@@ -104,7 +104,7 @@ span {
   width: 64px;
   top: 32px;
   right: 32px;
-  padding: 1px 0 0 0;
+  padding: 5px 0 0 0;
   position: absolute;
   box-shadow: none;
   input[type=submit] {
@@ -145,10 +145,21 @@ span {
 }
 
 /* Itinerary ******************************************************************/
-.itinerary-container {
-  margin: 31px 0 -22px;
-  padding: 0 0 0 2px;
+#scroll-top-container {
+  height: 20px;
+  width: 100%;
+  margin-top: 28px;
   overflow-x: scroll;
+  overflow-y: hidden;
+}
+#scroll-top {
+  width: 5000px;
+  height: 20px;
+}
+#itinerary-container {
+  margin: 0 0 -22px;
+  padding: 0 0 0 2px;
+  overflow-x: hidden;
   overflow-y: hidden;
   white-space: nowrap;
 }
@@ -235,12 +246,16 @@ span {
     overflow-y: scroll;
   }
   .btn-modal {
-    background-color: $darker-color;
+    background-color: $primary-color;
     height: 32px;
-    padding-top: 8px;
+    width: 64px;
+    padding: 5px 0 0 0;
+    word-wrap: normal;
     box-shadow: none;
     &.cancel {
       background-color: $dark-grey;
+      color: $black;
+      padding: 2px 0 0 0;
     }
   }
 }

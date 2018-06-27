@@ -5,9 +5,9 @@
 
 <!--= Trip ==================================================================-->
 <p class="page-title">Trip</p>
-<button class="btn btn-block delete-trip">
+<div class="btn btn-block delete-trip">
   <%= button_to("Delete", @trip, :method => "delete") %>
-</button>
+</div>
 <%= form_for :trip, url: trip_path(@trip), method: :patch do |f| %>
   <div class="trip-info-container">
     <div class="input">
@@ -45,7 +45,10 @@
 
 <!--= Itinerary ============================================================-->
 <p class="page-title">Itinerary</p>
-<div class="itinerary-container">
+<div id="scroll-top-container">
+  <div id="scroll-top"></div>
+</div>
+<div id="itinerary-container">
 
   <% @days.each_with_index do |day, i| %>
     <div class="day card">
@@ -87,5 +90,19 @@
     <% end %>
   </div>
 </div>
+
+<!--=========================================================================-->
+<script>
+setInterval(function loop() {
+  $("#scroll-top").width(291*($("#itinerary-container").children().length-1)+41);
+  return loop;
+}(), 1000);
+$("#scroll-top-container").scroll(function(){
+  $("#itinerary-container").scrollLeft($("#scroll-top-container").scrollLeft());
+});
+$("#itinerary-container").scroll(function(){
+  $("#scroll-top-container").scrollLeft($("#itinerary-container").scrollLeft());
+});
+</script>
 
 <!--=========================================================================-->
