@@ -4,7 +4,10 @@ class DaysController < ApplicationController
   # PATCH/PUT /days.json
   def update
     @day = Day.find(current_user.selday)
-    noEmptyCities = day_params["place_ids"].reject(&:empty?)
+    places_ids = @day.places.map { |place| place.id }
+    noEmptyCities = day_params["place_ids"].reject(&:empty?).select do |id|
+      not places_ids.include? Integer(id)
+    end
     @day.places << Place.find(noEmptyCities)
     redirect_to @day.trip
   end
