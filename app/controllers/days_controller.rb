@@ -6,6 +6,8 @@ class DaysController < ApplicationController
     @day = Day.find(current_user.selday)
     @trip = @day.trip
     #@day.places << Place.find(day_params["place_ids"])
+    noEmptyCities = day_params["place_ids"].reject(&:empty?)
+    @day.places << Place.find(noEmptyCities)
 
     # respond_to do |format|
     #   if @day.update(day_params)
@@ -21,10 +23,10 @@ class DaysController < ApplicationController
   private
 
   def set_day
-    params.require(:day).permit(:places => [])
+    params.require(:day).permit(:places_ids => [])
   end
 
   def day_params
-    params.require(:day).permit(:places => [])
+    params.require(:day).permit(:place_ids => [])
   end
 end

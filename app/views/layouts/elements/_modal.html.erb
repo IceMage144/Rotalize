@@ -20,11 +20,11 @@
               <% end %>
               <%= content_tag(:div, "", id: "collapse#{i}", class: "collapse show") do %>
                 <!-- Lugar -->
-                <% f.collection_check_boxes(:place_ids, local.places.all, :id, :name) do |b| %>
-                  <span>
+                <%= f.collection_check_boxes(:place_ids, local.places.all, :id, :name) do |b| %>
+                  <div>
                     <%= b.check_box %>
                     <%= b.label %>
-                  </span>
+                </div>
                 <% end %>
                 <!--% local.places.all.each do |place| %-->
                   <!--%= content_tag(:label, "", class: "modal-place mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect", for: "checkbox-#{count}") do %-->
