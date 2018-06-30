@@ -4,20 +4,9 @@ class DaysController < ApplicationController
   # PATCH/PUT /days.json
   def update
     @day = Day.find(current_user.selday)
-    @trip = @day.trip
-    #@day.places << Place.find(day_params["place_ids"])
     noEmptyCities = day_params["place_ids"].reject(&:empty?)
     @day.places << Place.find(noEmptyCities)
-
-    # respond_to do |format|
-    #   if @day.update(day_params)
-    #     format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @trip }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @trip.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    redirect_to @day.trip
   end
 
   private

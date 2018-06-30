@@ -10,7 +10,6 @@
       </div>
       <%= form_for :day, url: update_day_path(:day), method: :put do |f| %>
         <div class="modal-body">
-          <% count = 0 %>
           <% Local.all.each_with_index do |local, i| %>
             <!-- Local -->
             <div class="modal-local">
@@ -22,17 +21,10 @@
                 <!-- Lugar -->
                 <%= f.collection_check_boxes(:place_ids, local.places.all, :id, :name) do |b| %>
                   <div>
-                    <%= b.check_box %>
-                    <%= b.label %>
-                </div>
+                    <%= b.check_box class: "mdl-checkbox__input" %>
+                    <%= b.label class: "mdl-checkbox__label" %>
+                  </div>
                 <% end %>
-                <!--% local.places.all.each do |place| %-->
-                  <!--%= content_tag(:label, "", class: "modal-place mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect", for: "checkbox-#{count}") do %-->
-                    <!--%= content_tag(:input, "", id: "checkbox-#{count}", type:"checkbox", class: "mdl-checkbox__input") %-->
-                    <!-- <span class="mdl-checkbox__label"> --> <!--%= place.name %--> <!-- </span> -->
-                  <!--% end %-->
-                  <!--% count += 1 %-->
-                <!--% end %-->
               <% end %>
             </div>
           <% end %>
@@ -40,9 +32,7 @@
         <div class="modal-footer">
           <%= hidden_field(:day, :places, :value => 1) %>
           <button type="button" class="btn btn-modal cancel" data-dismiss="modal">CANCEL</button>
-          <div class="btn btn-modal save-img-btn">
-            <%= f.submit("Done") %>
-          </div>
+          <button id="done" class="btn btn-modal save-img-btn">DONE</button>
         </div>
         <% end %>
     </div>
@@ -50,3 +40,11 @@
 </div>
 
 <!--=========================================================================-->
+
+<script>
+$('#done').click(function() {
+    $('form').submit();
+    form_submitted = false;
+    $("#modal").modal('hide');
+});
+</script>
