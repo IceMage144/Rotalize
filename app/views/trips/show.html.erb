@@ -55,6 +55,12 @@
       <div class="day-header">
         <p><%= "#{i+1} - #{day.date.strftime('%d/%m/%Y')}" %></p>
       </div>
+      <%= form_for :day, url: delete_day_path(:day), method: :delete do |f| %>
+        <%= hidden_field(:day, :selday, :value => day.id) %>
+        <div class="btn">
+          <%= submit_tag('Delete') %>
+        </div>
+      <% end %>
       <% @places[i].size.times do |j| %>
         <div class="place">
           <div class="row">

@@ -12,13 +12,20 @@ class DaysController < ApplicationController
     redirect_to @day.trip
   end
 
+  def destroy
+    day = Day.find(day_params["selday"])
+    trip = day.trip
+    day.destroy
+    redirect_to trip
+  end
+
   private
 
   def set_day
-    params.require(:day).permit(:places_ids => [])
+    params.require(:day).permit(:selday, :places_ids => [])
   end
 
   def day_params
-    params.require(:day).permit(:place_ids => [])
+    params.require(:day).permit(:selday, :place_ids => [])
   end
 end
