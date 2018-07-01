@@ -30,9 +30,9 @@
 <% end %>
 
 <!--= Locals ================================================================-->
-<p class="page-title">Locals</p>
+<!-- <p class="page-title">Locals</p>
 <div class="locals-container card">
-  <!-- <div class="local">
+  <div class="local">
     <%= image_tag('place.svg') %>
     <p><span>Paris</span></p>
   </div>
@@ -40,8 +40,8 @@
   <div class="local">
     <%= image_tag('place.svg') %>
     <p><span>London</span></p>
-  </div> -->
-</div>
+  </div>
+</div> -->
 
 <!--= Itinerary ============================================================-->
 <p class="page-title">Itinerary</p>
@@ -54,13 +54,13 @@
     <div class="day card">
       <div class="day-header">
         <p><%= "#{i+1} - #{day.date.strftime('%d/%m/%Y')}" %></p>
+        <%= form_for :day, url: delete_day_path(:day), method: :delete do |f| %>
+          <%= hidden_field(:day, :selday, :value => day.id) %>
+          <div class="btn btn-delete-day">
+            <%= submit_tag('X') %>
+          </div>
+        <% end %>
       </div>
-      <%= form_for :day, url: delete_day_path(:day), method: :delete do |f| %>
-        <%= hidden_field(:day, :selday, :value => day.id) %>
-        <div class="btn">
-          <%= submit_tag('Delete') %>
-        </div>
-      <% end %>
       <% @places[i].size.times do |j| %>
         <div class="place">
           <div class="row">
