@@ -16,6 +16,13 @@ class DaysController < ApplicationController
     day = Day.find(day_params["selday"])
     trip = day.trip
     day.destroy
+    offset = 0
+    trip.days.all.each do |day|
+        day.update_attribute(:date, trip.beginning + offset)
+        offset += 1
+    end
+    trip.update_attribute(:duration, trip.attributes['duration'] - 1)
+    trip.save
     redirect_to trip
   end
 
