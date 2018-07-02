@@ -1,25 +1,26 @@
-app:
-    build: .
-    command: bash -c "
-          rake db:create db:migrate &&
-          rails s -p 80 -b '0.0.0.0'"
-    environment:
-        POSTGRES_HOST: postgres
-        POSTGRES_PORT: 5432
-        POSTGRES_DATABASE: postgres
-        POSTGRES_USER: rotalize
-    volumes:
-        - .:/app
-    ports:
-        - "80:80"
-    links:
-        - postgres
+version: '2'
+services:
+    app:
+        build: .
+        command: bash -c "
+              rake db:create db:migrate &&
+              rails s -p 80 -b '0.0.0.0'"
+        environment:
+            POSTGRES_HOST: postgres
+            POSTGRES_PORT: 5432
+            POSTGRES_DATABASE: postgres
+            POSTGRES_USER: rotalize
+        volumes:
+            - ./webapp:/opt/webapp
+        ports:
+            - "80:80"
+        links:
+            - postgres
 
-postgres:
-    image: postgres:10.3
-    environment:
-        POSTGRES_USER: rotalize
-    ports:
-        - "5432:5432"
-    volumes:
-        - ./tmp/db:/var/lib/postgresql/data
+    postgres:
+        image: postgres:latest
+        environment:
+            POSTGRES_USER: rotalize
+            ROTALIZE_DATABASE_PASSWORD: rotalize123
+        ports:
+            - "5432:5432"
