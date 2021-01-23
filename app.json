@@ -1,0 +1,8 @@
+{
+  "name": "Rotalize",
+  "description": "Your travel itinerary site",
+  "image": "heroku/ruby",
+  "addons": [
+    "heroku-postgresql"
+  ]
+}
